@@ -95,13 +95,3 @@ data class Coffee (
     var cups: Int,
     var money: Int
     )
-/*
-val espresso = Espresso(-250, 0, -16, -1, +4)
-data class Espresso (
-    val water: Int,
-    val milk: Int,
-    val beans: Int,
-    val cups: Int,
-    val money: Int
-        )
- */
