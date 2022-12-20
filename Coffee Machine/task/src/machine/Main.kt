@@ -10,52 +10,20 @@ fun main() {
         println()
         when (odabir) {
             "buy" -> {
-                println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:")
-                    when (readln()){
-                        "1" -> {
-                            if(kava.water < 250){
-                                println("Sorry, not enough water!")
-                            } else {
-                                kava.water -= 250
-                                kava.milk -= 0
-                                kava.beans -= 16
-                                kava.cups -= 1
-                                kava.money += 4
-                                println("I have enough resources, making you a coffee!")
-                                println()
-                            }
-                        }
-
-                        "2" -> {
-                            if(kava.water < 350){
-                                println("Sorry, not enough water!")
-                            } else {
-                                kava.water -= 350
-                                kava.milk -= 75
-                                kava.beans -= 20
-                                kava.cups -= 1
-                                kava.money += 7
-                                println("I have enough resources, making you a coffee!")
-                                println()
-                            }
-                        }
-
-                        "3" -> {
-                            if (kava.water < 200) {
-                                println("Sorry, not enough water!")
-                            } else {
-                            kava.water -= 200
-                            kava.milk -= 100
-                            kava.beans -= 12
-                            kava.cups -= 1
-                            kava.money += 6
-                            println("I have enough resources, making you a coffee!")
-                            println()
-                           }
-
-                        }
-                   }
+                var flag = true
+                while (flag) {
+                    println("What do you want to buy? 1 - espresso, 2 - latte, 3 - cappuccino, back - to main menu:")
+                    val unos = readln()
+                    flag = false
+                    when (unos) {
+                        "1" -> kava.espresso()
+                        "2" -> kava.latte()
+                        "3" -> kava.cappuccino()
+                        "back" -> {/* no-op */}
+                        else -> flag = true
+                    }
                 }
+            }
 
 
             "fill" -> {
@@ -88,10 +56,53 @@ fun main() {
     } while (odabir != "exit")
 }
 
-data class Coffee (
+data class Coffee(
     var water: Int,
     var milk: Int,
     var beans: Int,
     var cups: Int,
     var money: Int
-    )
+) {
+
+    fun espresso() {
+        if (water < 250) {
+            println("Sorry, not enough water!")
+        } else {
+            water -= 250
+            milk -= 0
+            beans -= 16
+            cups -= 1
+            money += 4
+            println("I have enough resources, making you a coffee!")
+            println()
+        }
+    }
+
+    fun latte() {
+        if (water < 350) {
+            println("Sorry, not enough water!")
+        } else {
+            water -= 350
+            milk -= 75
+            beans -= 20
+            cups -= 1
+            money += 7
+            println("I have enough resources, making you a coffee!")
+            println()
+        }
+    }
+
+    fun cappuccino() {
+        if (water < 200) {
+            println("Sorry, not enough water!")
+        } else {
+            water -= 200
+            milk -= 100
+            beans -= 12
+            cups -= 1
+            money += 6
+            println("I have enough resources, making you a coffee!")
+            println()
+        }
+    }
+}

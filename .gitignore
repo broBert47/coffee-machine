@@ -19,3 +19,5 @@ build
 !/Coffee Machine/task/src/
 !/Coffee Machine/task/build.gradle
 !/Coffee Machine/task/build.gradle.kts
+
+/Topics
